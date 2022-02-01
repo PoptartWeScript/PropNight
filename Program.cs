@@ -99,7 +99,7 @@ namespace PropNight
                 Components.VisualsComponent.DrawBoxThic.SetToolTip("Setting thickness to 0 will let the assembly auto-adjust itself depending on model distance"),
                 Components.VisualsComponent.DrawBoxBorder.SetToolTip("Drawing borders may take extra performance (FPS) on low-end computers"),
             };
-            RootMenu = new WeScript.SDK.UI.Menu("Rogue", "WeScript.app PropNight --Poptart--", true)
+            RootMenu = new WeScript.SDK.UI.Menu("PropNight", "WeScript.app PropNight --Poptart--", true)
             {
                 Components.MainAssemblyToggle.SetToolTip("The magical boolean which completely disables/enables the assembly!"),
                 VisualsMenu,
