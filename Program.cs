@@ -292,7 +292,6 @@ namespace PropNight
                                                     Renderer.DrawText(survivorname + " [" + dist + "]", vScreen_f33t.X, vScreen_f33t.Y + 5, Components.VisualsComponent.SurvColor.Color, 12, TextAlignment.centered, false);
                                                 }
                                             }
-                                            continue;
                                         }
 
                                         if (AActorID == EnemyID && dist > 5)
@@ -309,7 +308,6 @@ namespace PropNight
                                                     Renderer.DrawText(survivorname + " [" + dist + "]", vScreen_f33t.X, vScreen_f33t.Y + 5, Components.VisualsComponent.EnemyColor.Color, 12, TextAlignment.centered, false);
                                                 }
                                             }
-                                            continue;
                                         }
 
 
