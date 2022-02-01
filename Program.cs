@@ -278,7 +278,7 @@ namespace PropNight
                                     {
                                         dist = (int)(GetDistance3D(FMinimalViewInfo_Location, tempVec));
                                         
-                                        if (AActorID == SurvID)
+                                        if (AActorID == SurvID && dist > 5)
                                         {
                                             Vector2 vScreen_h3ad = new Vector2(0, 0);
                                             Vector2 vScreen_f33t = new Vector2(0, 0);
