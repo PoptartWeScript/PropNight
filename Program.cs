@@ -226,27 +226,21 @@ namespace PropNight
                 ULevel = Memory.ZwReadPointer(processHandle, GWorldPtr + 0x30, isWow64Process);
                 if (GWorldPtr != IntPtr.Zero)
                 {
-                    AActors = Memory.ZwReadPointer(processHandle, (IntPtr)ULevel.ToInt64() + 0x98, isWow64Process);
-                    ActorCnt = Memory.ZwReadUInt32(processHandle, (IntPtr)ULevel.ToInt64() + 0xA0);
+                    AActors = Memory.ZwReadPointer(processHandle, (IntPtr)(ULevel.ToInt64() + Offsets.UE.ULevel.AActors), isWow64Process);
+                    ActorCnt = Memory.ZwReadUInt32(processHandle, (IntPtr)(ULevel.ToInt64() + Offsets.UE.ULevel.AActorsCount));
 
                     if ((AActors != IntPtr.Zero) && (ActorCnt > 0))
                     {
                         for (uint i = 0; i <= ActorCnt; i++)
                         {
-                            AActor = Memory.ZwReadPointer(processHandle, (IntPtr)(AActors.ToInt64() + i * 8),
-                                isWow64Process);
+                            AActor = Memory.ZwReadPointer(processHandle, (IntPtr)(AActors.ToInt64() + i * 8),isWow64Process);
                             if (AActor != IntPtr.Zero)
-                            {
-                                                                    
-                                USceneComponent = Memory.ZwReadPointer(processHandle,
-                                    (IntPtr)AActor.ToInt64() + 0x130, isWow64Process);
+                            {                                               
+                                USceneComponent = Memory.ZwReadPointer(processHandle,(IntPtr)(AActor.ToInt64() + Offsets.UE.AActor.USceneComponent), isWow64Process);
                                 if (USceneComponent != IntPtr.Zero)
                                 {
-                                    tempVec = Memory.ZwReadVector3(processHandle,
-                                        (IntPtr)USceneComponent.ToInt64() + 0x11C);
-
-                                    AActorID = Memory.ZwReadUInt32(processHandle,
-                                        (IntPtr)AActor.ToInt64() + 0x18);
+                                    tempVec = Memory.ZwReadVector3(processHandle,(IntPtr)(USceneComponent.ToInt64() + Offsets.UE.AActor.tempVec));
+                                    AActorID = Memory.ZwReadUInt32(processHandle,(IntPtr)AActor.ToInt64() + 0x18);
                                     if (!CachedID.ContainsKey(AActorID))
                                     {
                                         var retname = GetNameFromFName(AActorID);
@@ -265,7 +259,7 @@ namespace PropNight
                                         if (retname.Contains("Surv4_C")) survivorname = "Mable";
                                         if (retname.Contains("Surv5_C")) survivorname = "Kate";
 
-                                        if (retname.Contains("Banshee_C") || retname.Contains("Surv2_C") || retname.Contains("Granny_C") || retname.Contains("Rabbit_C") || retname.Contains("Keymaster_C")) EnemyID = AActorID;
+                                        if (retname.Contains("Banshee_C") || retname.Contains("Vampire_C") || retname.Contains("Granny_C") || retname.Contains("Rabbit_C") || retname.Contains("Keymaster_C")) EnemyID = AActorID;
                                         if (retname.Contains("Banshee_C")) survivorname = "Banshee";
                                         if (retname.Contains("Granny_C")) survivorname = "Granny";
                                         if (retname.Contains("Keymaster_C")) survivorname = "Impostor";
